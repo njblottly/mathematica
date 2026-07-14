@@ -1,0 +1,728 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     30584,        720]
+NotebookOptionsPosition[     30098,        703]
+NotebookOutlinePosition[     30495,        719]
+CellTagsIndexPosition[     30452,        716]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"ClearAll", "[", "\"\<Global`*\>\"", "]"}], ";"}], 
+  "\n"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"mandelbrotKernel", "=", 
+    RowBox[{"Compile", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"cx", ",", "_Real"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"cy", ",", "_Real"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"width", ",", "_Real"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"n", ",", "_Integer"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"maxIter", ",", "_Integer"}], "}"}]}], "}"}], ",", 
+      RowBox[{"Module", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"data", "=", 
+           RowBox[{"Table", "[", 
+            RowBox[{"0.", ",", 
+             RowBox[{"{", "n", "}"}], ",", 
+             RowBox[{"{", "n", "}"}]}], "]"}]}], ",", "x0", ",", "y0", ",", 
+          "x", ",", "y", ",", "x2", ",", "y2", ",", "i", ",", "j", ",", "k", 
+          ",", "smooth", ",", "xmin", ",", "xmax", ",", "ymin", ",", "ymax"}],
+          "}"}], ",", 
+        RowBox[{
+         RowBox[{"xmin", "=", 
+          RowBox[{"cx", "-", 
+           RowBox[{"width", "/", "2."}]}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{"xmax", "=", 
+          RowBox[{"cx", "+", 
+           RowBox[{"width", "/", "2."}]}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{"ymin", "=", 
+          RowBox[{"cy", "-", 
+           RowBox[{"width", "/", "2."}]}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{"ymax", "=", 
+          RowBox[{"cy", "+", 
+           RowBox[{"width", "/", "2."}]}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{"For", "[", 
+          RowBox[{
+           RowBox[{"j", "=", "1"}], ",", 
+           RowBox[{"j", "<=", "n"}], ",", 
+           RowBox[{"j", "++"}], ",", 
+           RowBox[{
+            RowBox[{"y0", "=", 
+             RowBox[{"ymax", "-", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"j", "-", "1."}], ")"}], "*", 
+               RowBox[{
+                RowBox[{"(", 
+                 RowBox[{"ymax", "-", "ymin"}], ")"}], "/", 
+                RowBox[{"(", 
+                 RowBox[{"n", "-", "1."}], ")"}]}]}]}]}], ";", 
+            "\[IndentingNewLine]", 
+            RowBox[{"For", "[", 
+             RowBox[{
+              RowBox[{"i", "=", "1"}], ",", 
+              RowBox[{"i", "<=", "n"}], ",", 
+              RowBox[{"i", "++"}], ",", 
+              RowBox[{
+               RowBox[{"x0", "=", 
+                RowBox[{"xmin", "+", 
+                 RowBox[{
+                  RowBox[{"(", 
+                   RowBox[{"i", "-", "1."}], ")"}], "*", 
+                  RowBox[{
+                   RowBox[{"(", 
+                    RowBox[{"xmax", "-", "xmin"}], ")"}], "/", 
+                   RowBox[{"(", 
+                    RowBox[{"n", "-", "1."}], ")"}]}]}]}]}], ";", 
+               "\[IndentingNewLine]", 
+               RowBox[{"x", "=", "0."}], ";", "\[IndentingNewLine]", 
+               RowBox[{"y", "=", "0."}], ";", "\[IndentingNewLine]", 
+               RowBox[{"x2", "=", "0."}], ";", "\[IndentingNewLine]", 
+               RowBox[{"y2", "=", "0."}], ";", "\[IndentingNewLine]", 
+               RowBox[{"k", "=", "0"}], ";", "\[IndentingNewLine]", 
+               RowBox[{"While", "[", 
+                RowBox[{
+                 RowBox[{
+                  RowBox[{"k", "<", "maxIter"}], "&&", 
+                  RowBox[{
+                   RowBox[{"x2", "+", "y2"}], "<=", "4."}]}], ",", 
+                 RowBox[{
+                  RowBox[{"y", "=", 
+                   RowBox[{
+                    RowBox[{"2.", "*", "x", "*", "y"}], "+", "y0"}]}], ";", 
+                  "\[IndentingNewLine]", 
+                  RowBox[{"x", "=", 
+                   RowBox[{"x2", "-", "y2", "+", "x0"}]}], ";", 
+                  "\[IndentingNewLine]", 
+                  RowBox[{"x2", "=", 
+                   RowBox[{"x", "*", "x"}]}], ";", "\[IndentingNewLine]", 
+                  RowBox[{"y2", "=", 
+                   RowBox[{"y", "*", "y"}]}], ";", "\[IndentingNewLine]", 
+                  RowBox[{"k", "++"}], ";"}]}], "]"}], ";", 
+               "\[IndentingNewLine]", 
+               RowBox[{"If", "[", 
+                RowBox[{
+                 RowBox[{"k", "<", "maxIter"}], ",", 
+                 RowBox[{
+                  RowBox[{"smooth", "=", 
+                   RowBox[{"k", "+", "1.", "-", 
+                    RowBox[{
+                    RowBox[{"Log", "[", 
+                    RowBox[{"Log", "[", 
+                    RowBox[{"Sqrt", "[", 
+                    RowBox[{"x2", "+", "y2"}], "]"}], "]"}], "]"}], "/", 
+                    RowBox[{"Log", "[", "2.", "]"}]}]}]}], ";", 
+                  "\[IndentingNewLine]", 
+                  RowBox[{
+                   RowBox[{"data", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"j", ",", "i"}], "]"}], "]"}], "=", 
+                   RowBox[{"smooth", "/", "maxIter"}]}], ";", 
+                  "\[IndentingNewLine]", 
+                  RowBox[{"If", "[", 
+                   RowBox[{
+                    RowBox[{
+                    RowBox[{"data", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"j", ",", "i"}], "]"}], "]"}], "<", "0."}], ",", 
+                    RowBox[{
+                    RowBox[{"data", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"j", ",", "i"}], "]"}], "]"}], "=", "0."}]}], 
+                   "]"}], ";", "\[IndentingNewLine]", 
+                  RowBox[{"If", "[", 
+                   RowBox[{
+                    RowBox[{
+                    RowBox[{"data", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"j", ",", "i"}], "]"}], "]"}], ">", "1."}], ",", 
+                    RowBox[{
+                    RowBox[{"data", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"j", ",", "i"}], "]"}], "]"}], "=", "1."}]}], 
+                   "]"}]}], ",", 
+                 RowBox[{
+                  RowBox[{"data", "[", 
+                   RowBox[{"[", 
+                    RowBox[{"j", ",", "i"}], "]"}], "]"}], "=", "0."}]}], 
+                "]"}], ";"}]}], "]"}], ";"}]}], "]"}], ";", 
+         "\[IndentingNewLine]", "data"}]}], "]"}], ",", 
+      RowBox[{"RuntimeOptions", "->", "\"\<Speed\>\""}]}], "]"}]}], ";"}], 
+  "\n"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"mandelbrotPlot", "[", 
+     RowBox[{
+     "center_", ",", "width_", ",", "resolution_", ",", "maxIter_", ",", 
+      "scheme_"}], "]"}], ":=", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"data", ",", "xmin", ",", "xmax", ",", "ymin", ",", "ymax"}], 
+       "}"}], ",", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"xmin", ",", "xmax"}], "}"}], "=", 
+        RowBox[{
+         RowBox[{"center", "[", 
+          RowBox[{"[", "1", "]"}], "]"}], "+", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"-", "width"}], "/", "2"}], ",", 
+           RowBox[{"width", "/", "2"}]}], "}"}]}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"ymin", ",", "ymax"}], "}"}], "=", 
+        RowBox[{
+         RowBox[{"center", "[", 
+          RowBox[{"[", "2", "]"}], "]"}], "+", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"-", "width"}], "/", "2"}], ",", 
+           RowBox[{"width", "/", "2"}]}], "}"}]}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"data", "=", 
+        RowBox[{"mandelbrotKernel", "[", 
+         RowBox[{
+          RowBox[{"N", "[", 
+           RowBox[{"center", "[", 
+            RowBox[{"[", "1", "]"}], "]"}], "]"}], ",", 
+          RowBox[{"N", "[", 
+           RowBox[{"center", "[", 
+            RowBox[{"[", "2", "]"}], "]"}], "]"}], ",", 
+          RowBox[{"N", "[", "width", "]"}], ",", "resolution", ",", 
+          "maxIter"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"ArrayPlot", "[", 
+        RowBox[{"data", ",", 
+         RowBox[{"DataRange", "->", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"xmin", ",", "xmax"}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"ymin", ",", "ymax"}], "}"}]}], "}"}]}], ",", 
+         RowBox[{"PlotRange", "->", 
+          RowBox[{"{", 
+           RowBox[{"0", ",", "1"}], "}"}]}], ",", 
+         RowBox[{"ColorFunction", "->", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"If", "[", 
+             RowBox[{
+              RowBox[{"#", "<=", 
+               RowBox[{"10", "^", 
+                RowBox[{"-", "12"}]}]}], ",", "Black", ",", 
+              RowBox[{
+               RowBox[{"ColorData", "[", "scheme", "]"}], "[", "#", "]"}]}], 
+             "]"}], "&"}], ")"}]}], ",", 
+         RowBox[{"ColorFunctionScaling", "->", "False"}], ",", 
+         RowBox[{"AspectRatio", "->", "1"}], ",", 
+         RowBox[{"Frame", "->", "True"}], ",", 
+         RowBox[{"Axes", "->", "False"}], ",", 
+         RowBox[{"GridLines", "->", "Automatic"}], ",", 
+         RowBox[{"GridLinesStyle", "->", 
+          RowBox[{"Directive", "[", 
+           RowBox[{"GrayLevel", "[", 
+            RowBox[{"0.7", ",", "0.25"}], "]"}], "]"}]}], ",", 
+         RowBox[{"ImageSize", "->", "650"}], ",", 
+         RowBox[{"FrameLabel", "->", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"Style", "[", 
+             RowBox[{"\"\<Re(c)\>\"", ",", "12"}], "]"}], ",", 
+            RowBox[{"Style", "[", 
+             RowBox[{"\"\<Im(c)\>\"", ",", "12"}], "]"}]}], "}"}]}], ",", 
+         RowBox[{"PlotLabel", "->", 
+          RowBox[{"Style", "[", 
+           RowBox[{
+            RowBox[{"Row", "[", 
+             RowBox[{"{", 
+              RowBox[{"\"\<Centre = \>\"", ",", 
+               RowBox[{"NumberForm", "[", 
+                RowBox[{
+                 RowBox[{"center", "[", 
+                  RowBox[{"[", "1", "]"}], "]"}], ",", 
+                 RowBox[{"{", 
+                  RowBox[{"14", ",", "10"}], "}"}]}], "]"}], ",", 
+               "\"\< + \>\"", ",", 
+               RowBox[{"NumberForm", "[", 
+                RowBox[{
+                 RowBox[{"center", "[", 
+                  RowBox[{"[", "2", "]"}], "]"}], ",", 
+                 RowBox[{"{", 
+                  RowBox[{"14", ",", "10"}], "}"}]}], "]"}], ",", 
+               "\"\< i     Width = \>\"", ",", 
+               RowBox[{"ScientificForm", "[", 
+                RowBox[{"width", ",", "4"}], "]"}], ",", 
+               "\"\<     Iterations = \>\"", ",", "maxIter"}], "}"}], "]"}], 
+            ",", "12"}], "]"}]}]}], "]"}]}]}], "]"}]}], ";"}], 
+  "\n"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"mandelbrotExplorer", ":=", 
+    RowBox[{"DynamicModule", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"center", "=", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"-", "0.75"}], ",", "0."}], "}"}]}], ",", 
+        RowBox[{"width", "=", "3."}], ",", 
+        RowBox[{"resolution", "=", "700"}], ",", 
+        RowBox[{"maxIter", "=", "350"}], ",", 
+        RowBox[{"scheme", "=", "\"\<SunsetColors\>\""}], ",", 
+        RowBox[{"zoomFactor", "=", "0.35"}], ",", 
+        RowBox[{"history", "=", 
+         RowBox[{"{", "}"}]}], ",", "mousePoint", ",", "exportFile"}], "}"}], 
+      ",", 
+      RowBox[{"Column", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"Style", "[", 
+           RowBox[{
+           "\"\<Interactive Mandelbrot Explorer\>\"", ",", "18", ",", 
+            "Bold"}], "]"}], ",", 
+          RowBox[{"Style", "[", 
+           RowBox[{
+           "\"\<Click on the image to recenter and zoom. Use Back to return \
+to the previous view. Increase iterations as you zoom deeper.\>\"", ",", 
+            "12"}], "]"}], ",", 
+          RowBox[{"Grid", "[", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"Button", "[", 
+                 RowBox[{"\"\<Reset\>\"", ",", 
+                  RowBox[{
+                   RowBox[{"center", "=", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"-", "0.75"}], ",", "0."}], "}"}]}], ";", 
+                   "\[IndentingNewLine]", 
+                   RowBox[{"width", "=", "3."}], ";", "\[IndentingNewLine]", 
+                   RowBox[{"history", "=", 
+                    RowBox[{"{", "}"}]}]}], ",", 
+                  RowBox[{"Method", "->", "\"\<Queued\>\""}]}], "]"}], ",", 
+                RowBox[{"Button", "[", 
+                 RowBox[{"\"\<Back\>\"", ",", 
+                  RowBox[{"If", "[", 
+                   RowBox[{
+                    RowBox[{
+                    RowBox[{"Length", "[", "history", "]"}], ">", "0"}], ",", 
+                    
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"center", ",", "width"}], "}"}], "=", 
+                    RowBox[{"Last", "[", "history", "]"}]}], ";", 
+                    "\[IndentingNewLine]", 
+                    RowBox[{"history", "=", 
+                    RowBox[{"Most", "[", "history", "]"}]}], ";"}]}], "]"}], 
+                  ",", 
+                  RowBox[{"Method", "->", "\"\<Queued\>\""}]}], "]"}], ",", 
+                RowBox[{"Button", "[", 
+                 RowBox[{"\"\<Zoom in at centre\>\"", ",", 
+                  RowBox[{
+                   RowBox[{"AppendTo", "[", 
+                    RowBox[{"history", ",", 
+                    RowBox[{"{", 
+                    RowBox[{"center", ",", "width"}], "}"}]}], "]"}], ";", 
+                   "\[IndentingNewLine]", 
+                   RowBox[{"width", "=", 
+                    RowBox[{"width", "*", "zoomFactor"}]}]}], ",", 
+                  RowBox[{"Method", "->", "\"\<Queued\>\""}]}], "]"}], ",", 
+                RowBox[{"Button", "[", 
+                 RowBox[{"\"\<Zoom out at centre\>\"", ",", 
+                  RowBox[{
+                   RowBox[{"AppendTo", "[", 
+                    RowBox[{"history", ",", 
+                    RowBox[{"{", 
+                    RowBox[{"center", ",", "width"}], "}"}]}], "]"}], ";", 
+                   "\[IndentingNewLine]", 
+                   RowBox[{"width", "=", 
+                    RowBox[{"width", "/", "zoomFactor"}]}]}], ",", 
+                  RowBox[{"Method", "->", "\"\<Queued\>\""}]}], "]"}]}], 
+               "}"}], ",", 
+              RowBox[{"{", 
+               RowBox[{"\"\<Resolution\>\"", ",", 
+                RowBox[{"SetterBar", "[", 
+                 RowBox[{
+                  RowBox[{"Dynamic", "[", "resolution", "]"}], ",", 
+                  RowBox[{"{", 
+                   RowBox[{
+                   "350", ",", "500", ",", "700", ",", "900", ",", "1200"}], 
+                   "}"}]}], "]"}], ",", "SpanFromLeft", ",", "SpanFromLeft"}],
+                "}"}], ",", 
+              RowBox[{"{", 
+               RowBox[{"\"\<Max iterations\>\"", ",", 
+                RowBox[{"SetterBar", "[", 
+                 RowBox[{
+                  RowBox[{"Dynamic", "[", "maxIter", "]"}], ",", 
+                  RowBox[{"{", 
+                   RowBox[{
+                   "100", ",", "250", ",", "350", ",", "500", ",", "750", ",",
+                     "1000", ",", "1500", ",", "2500", ",", "4000"}], "}"}]}],
+                  "]"}], ",", "SpanFromLeft", ",", "SpanFromLeft"}], "}"}], 
+              ",", 
+              RowBox[{"{", 
+               RowBox[{"\"\<Colour scheme\>\"", ",", 
+                RowBox[{"PopupMenu", "[", 
+                 RowBox[{
+                  RowBox[{"Dynamic", "[", "scheme", "]"}], ",", 
+                  RowBox[{"{", 
+                   RowBox[{
+                   "\"\<SunsetColors\>\"", ",", "\"\<AvocadoColors\>\"", ",", 
+                    "\"\<DarkRainbow\>\"", ",", "\"\<DeepSeaColors\>\"", ",", 
+                    "\"\<SolarColors\>\"", ",", "\"\<TemperatureMap\>\"", 
+                    ",", "\"\<Rainbow\>\""}], "}"}]}], "]"}], ",", 
+                "SpanFromLeft", ",", "SpanFromLeft"}], "}"}], ",", 
+              RowBox[{"{", 
+               RowBox[{"\"\<Click zoom factor\>\"", ",", 
+                RowBox[{"Slider", "[", 
+                 RowBox[{
+                  RowBox[{"Dynamic", "[", "zoomFactor", "]"}], ",", 
+                  RowBox[{"{", 
+                   RowBox[{"0.15", ",", "0.8"}], "}"}]}], "]"}], ",", 
+                RowBox[{"Dynamic", "[", 
+                 RowBox[{"NumberForm", "[", 
+                  RowBox[{"zoomFactor", ",", 
+                   RowBox[{"{", 
+                    RowBox[{"3", ",", "2"}], "}"}]}], "]"}], "]"}], ",", 
+                "SpanFromLeft"}], "}"}]}], "}"}], ",", 
+            RowBox[{"Alignment", "->", "Left"}], ",", 
+            RowBox[{"Spacings", "->", 
+             RowBox[{"{", 
+              RowBox[{"2", ",", "1"}], "}"}]}]}], "]"}], ",", 
+          RowBox[{"EventHandler", "[", 
+           RowBox[{
+            RowBox[{"Dynamic", "[", 
+             RowBox[{
+              RowBox[{"mandelbrotPlot", "[", 
+               RowBox[{
+               "center", ",", "width", ",", "resolution", ",", "maxIter", ",",
+                 "scheme"}], "]"}], ",", 
+              RowBox[{"TrackedSymbols", ":>", 
+               RowBox[{"{", 
+                RowBox[{
+                "center", ",", "width", ",", "resolution", ",", "maxIter", 
+                 ",", "scheme"}], "}"}]}]}], "]"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"\"\<MouseClicked\>\"", ":>", 
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{"mousePoint", "=", 
+                 RowBox[{"MousePosition", "[", "\"\<Graphics\>\"", "]"}]}], 
+                ";", "\[IndentingNewLine]", 
+                RowBox[{"If", "[", 
+                 RowBox[{
+                  RowBox[{"VectorQ", "[", 
+                   RowBox[{"mousePoint", ",", "NumericQ"}], "]"}], ",", 
+                  RowBox[{
+                   RowBox[{"AppendTo", "[", 
+                    RowBox[{"history", ",", 
+                    RowBox[{"{", 
+                    RowBox[{"center", ",", "width"}], "}"}]}], "]"}], ";", 
+                   "\[IndentingNewLine]", 
+                   RowBox[{"center", "=", 
+                    RowBox[{"N", "[", "mousePoint", "]"}]}], ";", 
+                   "\[IndentingNewLine]", 
+                   RowBox[{"width", "=", 
+                    RowBox[{"N", "[", 
+                    RowBox[{"width", "*", "zoomFactor"}], "]"}]}], ";"}]}], 
+                 "]"}], ";"}], ")"}]}], "}"}]}], "]"}], ",", 
+          RowBox[{"Dynamic", "[", 
+           RowBox[{"Grid", "[", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{"\"\<Current centre\>\"", ",", 
+                 RowBox[{"NumberForm", "[", 
+                  RowBox[{"center", ",", 
+                   RowBox[{"{", 
+                    RowBox[{"16", ",", "12"}], "}"}]}], "]"}]}], "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"\"\<Current width\>\"", ",", 
+                 RowBox[{"ScientificForm", "[", 
+                  RowBox[{"width", ",", "5"}], "]"}]}], "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"\"\<View depth\>\"", ",", 
+                 RowBox[{"Length", "[", "history", "]"}]}], "}"}]}], "}"}], 
+             ",", 
+             RowBox[{"Alignment", "->", "Left"}]}], "]"}], "]"}], ",", 
+          RowBox[{"Button", "[", 
+           RowBox[{"\"\<Export current view to Desktop\>\"", ",", 
+            RowBox[{
+             RowBox[{"exportFile", "=", 
+              RowBox[{"FileNameJoin", "[", 
+               RowBox[{"{", 
+                RowBox[{"$HomeDirectory", ",", "\"\<Desktop\>\"", ",", 
+                 RowBox[{"\"\<mandelbrot_\>\"", "<>", 
+                  RowBox[{"DateString", "[", 
+                   RowBox[{"{", 
+                    RowBox[{
+                    "\"\<Year\>\"", ",", "\"\<Month\>\"", ",", "\"\<Day\>\"", 
+                    ",", "\"\<_\>\"", ",", "\"\<Hour\>\"", ",", 
+                    "\"\<Minute\>\"", ",", "\"\<Second\>\""}], "}"}], "]"}], 
+                  "<>", "\"\<.png\>\""}]}], "}"}], "]"}]}], ";", 
+             "\[IndentingNewLine]", 
+             RowBox[{"Export", "[", 
+              RowBox[{"exportFile", ",", 
+               RowBox[{"mandelbrotPlot", "[", 
+                RowBox[{"center", ",", "width", ",", "1600", ",", 
+                 RowBox[{"Max", "[", 
+                  RowBox[{"maxIter", ",", "1000"}], "]"}], ",", "scheme"}], 
+                "]"}], ",", 
+               RowBox[{"ImageResolution", "->", "300"}]}], "]"}], ";", 
+             "\[IndentingNewLine]", 
+             RowBox[{"CreateDialog", "[", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"TextCell", "[", 
+                 RowBox[{"\"\<Exported to:\\n\>\"", "<>", "exportFile"}], 
+                 "]"}], ",", 
+                RowBox[{"DefaultButton", "[", "]"}]}], "}"}], "]"}]}], ",", 
+            RowBox[{"Method", "->", "\"\<Queued\>\""}]}], "]"}]}], "}"}], ",", 
+        RowBox[{"Spacings", "->", "1.2"}]}], "]"}]}], "]"}]}], ";"}], 
+  "\n"}], "\[IndentingNewLine]", "mandelbrotExplorer"}], "Input",
+ CellChangeTimes->{{3.991268375306353*^9, 3.991268375308172*^9}},
+ CellLabel->"In[55]:=",ExpressionUUID->"096c9f67-5b04-4030-b495-c13aa92ccca2"],
+
+Cell[BoxData[
+ DynamicModuleBox[{$CellContext`center$$ = {-0.75, 0.}, $CellContext`width$$ =
+   3., $CellContext`resolution$$ = 700, $CellContext`maxIter$$ = 
+  350, $CellContext`scheme$$ = "SunsetColors", $CellContext`zoomFactor$$ = 
+  0.8, $CellContext`history$$ = {}, $CellContext`mousePoint$$ = \
+{-1.1679472356686798`, -0.24271818659957556`}, $CellContext`exportFile$$}, 
+  TagBox[GridBox[{
+     {
+      StyleBox["\<\"Interactive Mandelbrot Explorer\"\>",
+       StripOnInput->False,
+       FontSize->18,
+       FontWeight->Bold]},
+     {
+      StyleBox["\<\"Click on the image to recenter and zoom. Use Back to \
+return to the previous view. Increase iterations as you zoom deeper.\"\>",
+       StripOnInput->False,
+       FontSize->12]},
+     {
+      TagBox[GridBox[{
+         {
+          ButtonBox["\<\"Reset\"\>",
+           Appearance->Automatic,
+           
+           ButtonFunction:>($CellContext`center$$ = {-0.75, 
+              0.}; $CellContext`width$$ = 3.; $CellContext`history$$ = {}),
+           Evaluator->Automatic,
+           Method->"Queued"], 
+          ButtonBox["\<\"Back\"\>",
+           Appearance->Automatic,
+           
+           ButtonFunction:>If[
+            Length[$CellContext`history$$] > 
+             0, {$CellContext`center$$, $CellContext`width$$} = 
+              Last[$CellContext`history$$]; $CellContext`history$$ = 
+              Most[$CellContext`history$$]; Null],
+           Evaluator->Automatic,
+           Method->"Queued"], 
+          ButtonBox["\<\"Zoom in at centre\"\>",
+           Appearance->Automatic,
+           
+           ButtonFunction:>(
+            AppendTo[$CellContext`history$$, {$CellContext`center$$, \
+$CellContext`width$$}]; $CellContext`width$$ = $CellContext`width$$ \
+$CellContext`zoomFactor$$),
+           Evaluator->Automatic,
+           Method->"Queued"], 
+          ButtonBox["\<\"Zoom out at centre\"\>",
+           Appearance->Automatic,
+           
+           ButtonFunction:>(
+            AppendTo[$CellContext`history$$, {$CellContext`center$$, \
+$CellContext`width$$}]; $CellContext`width$$ = \
+$CellContext`width$$/$CellContext`zoomFactor$$),
+           Evaluator->Automatic,
+           Method->"Queued"]},
+         {"\<\"Resolution\"\>", 
+          InterpretationBox[
+           StyleBox[GridBox[{
+              {
+               SetterBox[Dynamic[$CellContext`resolution$$], {350}, "350"], 
+               SetterBox[Dynamic[$CellContext`resolution$$], {500}, "500"], 
+               SetterBox[Dynamic[$CellContext`resolution$$], {700}, "700"], 
+               SetterBox[Dynamic[$CellContext`resolution$$], {900}, "900"], 
+               SetterBox[Dynamic[$CellContext`resolution$$], {1200}, "1200"]}
+             },
+             BaselinePosition->{1, 1},
+             GridBoxSpacings->{"Columns" -> {
+                 Offset[0.27999999999999997`], {
+                  Offset[0.]}, 
+                 Offset[0.27999999999999997`]}, "Rows" -> {
+                 Offset[0.2], {
+                  Offset[0.4]}, 
+                 Offset[0.2]}}],
+            Deployed->True],
+           SetterBar[
+            Dynamic[$CellContext`resolution$$], {350, 500, 700, 900, 1200}]], 
+          "\[SpanFromLeft]", "\[SpanFromLeft]"},
+         {"\<\"Max iterations\"\>", 
+          InterpretationBox[
+           StyleBox[GridBox[{
+              {
+               SetterBox[Dynamic[$CellContext`maxIter$$], {100}, "100"], 
+               SetterBox[Dynamic[$CellContext`maxIter$$], {250}, "250"], 
+               SetterBox[Dynamic[$CellContext`maxIter$$], {350}, "350"], 
+               SetterBox[Dynamic[$CellContext`maxIter$$], {500}, "500"], 
+               SetterBox[Dynamic[$CellContext`maxIter$$], {750}, "750"], 
+               SetterBox[Dynamic[$CellContext`maxIter$$], {1000}, "1000"], 
+               SetterBox[Dynamic[$CellContext`maxIter$$], {1500}, "1500"], 
+               SetterBox[Dynamic[$CellContext`maxIter$$], {2500}, "2500"], 
+               SetterBox[Dynamic[$CellContext`maxIter$$], {4000}, "4000"]}
+             },
+             BaselinePosition->{1, 1},
+             GridBoxSpacings->{"Columns" -> {
+                 Offset[0.27999999999999997`], {
+                  Offset[0.]}, 
+                 Offset[0.27999999999999997`]}, "Rows" -> {
+                 Offset[0.2], {
+                  Offset[0.4]}, 
+                 Offset[0.2]}}],
+            Deployed->True],
+           SetterBar[
+            Dynamic[$CellContext`maxIter$$], {100, 250, 350, 500, 750, 1000, 
+            1500, 2500, 4000}]], "\[SpanFromLeft]", "\[SpanFromLeft]"},
+         {"\<\"Colour scheme\"\>", 
+          
+          PopupMenuBox[Dynamic[$CellContext`scheme$$], {
+           "SunsetColors"->"\<\"SunsetColors\"\>", 
+           "AvocadoColors"->"\<\"AvocadoColors\"\>", 
+           "DarkRainbow"->"\<\"DarkRainbow\"\>", 
+           "DeepSeaColors"->"\<\"DeepSeaColors\"\>", 
+           "SolarColors"->"\<\"SolarColors\"\>", 
+           "TemperatureMap"->"\<\"TemperatureMap\"\>", 
+           "Rainbow"->"\<\"Rainbow\"\>"}], "\[SpanFromLeft]", 
+          "\[SpanFromLeft]"},
+         {"\<\"Click zoom factor\"\>", 
+          SliderBox[Dynamic[$CellContext`zoomFactor$$], {0.15, 0.8}], 
+          DynamicBox[ToBoxes[
+            NumberForm[$CellContext`zoomFactor$$, {3, 2}], StandardForm],
+           ImageSizeCache->{31., {1., 9.}}], "\[SpanFromLeft]"}
+        },
+        AutoDelete->False,
+        GridBoxAlignment->{"Columns" -> {{Left}}},
+        GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+        GridBoxSpacings->{"Columns" -> {{2}}, "Rows" -> {{1}}}],
+       "Grid"]},
+     {
+      TagBox[
+       DynamicBox[ToBoxes[
+         $CellContext`mandelbrotPlot[$CellContext`center$$, \
+$CellContext`width$$, $CellContext`resolution$$, $CellContext`maxIter$$, \
+$CellContext`scheme$$], StandardForm],
+        ImageSizeCache->{650., {330., 334.}},
+        TrackedSymbols:>{$CellContext`center$$, $CellContext`width$$, \
+$CellContext`resolution$$, $CellContext`maxIter$$, $CellContext`scheme$$}],
+       EventHandlerTag[{
+        "MouseClicked" :> ($CellContext`mousePoint$$ = 
+           MousePosition["Graphics"]; If[
+            VectorQ[$CellContext`mousePoint$$, NumericQ], 
+            AppendTo[$CellContext`history$$, {$CellContext`center$$, \
+$CellContext`width$$}]; $CellContext`center$$ = 
+             N[$CellContext`mousePoint$$]; $CellContext`width$$ = 
+             N[$CellContext`width$$ $CellContext`zoomFactor$$]; Null]; Null), 
+         Method -> "Preemptive", PassEventsDown -> Automatic, PassEventsUp -> 
+         True}]]},
+     {
+      DynamicBox[ToBoxes[
+        Grid[{{"Current centre", 
+           NumberForm[$CellContext`center$$, {16, 12}]}, {"Current width", 
+           ScientificForm[$CellContext`width$$, 5]}, {"View depth", 
+           Length[$CellContext`history$$]}}, Alignment -> Left], StandardForm],
+       ImageSizeCache->{370., {22., 28.}}]},
+     {
+      ButtonBox["\<\"Export current view to Desktop\"\>",
+       Appearance->Automatic,
+       ButtonFunction:>($CellContext`exportFile$$ = 
+         FileNameJoin[{$HomeDirectory, "Desktop", "mandelbrot_" <> 
+            DateString[{
+              "Year", "Month", "Day", "_", "Hour", "Minute", "Second"}] <> 
+            ".png"}]; Export[$CellContext`exportFile$$, 
+          $CellContext`mandelbrotPlot[$CellContext`center$$, \
+$CellContext`width$$, 1600, 
+           Max[$CellContext`maxIter$$, 1000], $CellContext`scheme$$], 
+          ImageResolution -> 300]; CreateDialog[{
+           TextCell["Exported to:\n" <> $CellContext`exportFile$$], 
+           DefaultButton[]}]),
+       Evaluator->Automatic,
+       Method->"Queued"]}
+    },
+    DefaultBaseStyle->"Column",
+    GridBoxAlignment->{"Columns" -> {{Left}}},
+    GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+    GridBoxSpacings->{"Columns" -> {{Automatic}}, "Rows" -> {{1.2}}}],
+   "Column"],
+  DynamicModuleValues:>{}]], "Output",
+ CellChangeTimes->{3.991268376837219*^9},
+ CellLabel->"Out[59]=",ExpressionUUID->"761d300b-7c55-4f5b-83e6-654fd0415908"]
+}, Open  ]]
+},
+WindowSize->{1358, 1092},
+WindowMargins->{{451, Automatic}, {Automatic, 73}},
+FrontEndVersion->"13.3 for Mac OS X ARM (64-bit) (April 11, 2023)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"f98fa424-a3cf-4519-a1ae-66af14a61328"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 21474, 501, 1270, "Input",ExpressionUUID->"096c9f67-5b04-4030-b495-c13aa92ccca2"],
+Cell[22057, 525, 8025, 175, 1074, "Output",ExpressionUUID->"761d300b-7c55-4f5b-83e6-654fd0415908"]
+}, Open  ]]
+}
+]
+*)
+
