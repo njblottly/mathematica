@@ -1,0 +1,274 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     12198,        264]
+NotebookOptionsPosition[     11624,        246]
+NotebookOutlinePosition[     12021,        262]
+CellTagsIndexPosition[     11978,        259]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"primes", "=", 
+    RowBox[{"Prime", "[", 
+     RowBox[{"Range", "[", 
+      RowBox[{"PrimePi", "[", "10000", "]"}], "]"}], "]"}]}], ";"}], 
+  "\n"}], "\[IndentingNewLine]", 
+ RowBox[{"Histogram", "[", 
+  RowBox[{"primes", ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "10000", ",", "100"}], "}"}], ",", 
+   RowBox[{"AxesLabel", "->", 
+    RowBox[{"{", 
+     RowBox[{"\"\<n\>\"", ",", "\"\<Primes per 100\>\""}], "}"}]}], ",", 
+   RowBox[{
+   "PlotLabel", "->", 
+    "\"\<Number of primes in each block of 100 up to 10,000\>\""}], ",", 
+   RowBox[{"Ticks", "->", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"Range", "[", 
+       RowBox[{"0", ",", "10000", ",", "1000"}], "]"}], ",", "Automatic"}], 
+     "}"}]}], ",", 
+   RowBox[{"ImageSize", "->", "Large"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{4.001377876343409*^9, 4.0013778763447866`*^9}},
+ CellLabel->"In[4]:=",ExpressionUUID->"29600e56-d39a-48d0-93f9-c47e645bda0f"],
+
+Cell[BoxData[
+ GraphicsBox[{
+   {RGBColor[0.987148, 0.8073604000000001, 0.49470040000000004`], EdgeForm[
+    Opacity[0.]], {}, 
+    {RGBColor[0.987148, 0.8073604000000001, 0.49470040000000004`], EdgeForm[
+     Opacity[0.]], RectangleBox[{0., 0}, {100., 25.},
+      RoundingRadius->0], RectangleBox[{100., 0}, {200., 21.},
+      RoundingRadius->0], RectangleBox[{200., 0}, {300., 16.},
+      RoundingRadius->0], RectangleBox[{300., 0}, {400., 16.},
+      RoundingRadius->0], RectangleBox[{400., 0}, {500., 17.},
+      RoundingRadius->0], RectangleBox[{500., 0}, {600., 14.},
+      RoundingRadius->0], RectangleBox[{600., 0}, {700., 16.},
+      RoundingRadius->0], RectangleBox[{700., 0}, {800., 14.},
+      RoundingRadius->0], RectangleBox[{800., 0}, {900., 15.},
+      RoundingRadius->0], RectangleBox[{900., 0}, {1000., 14.},
+      RoundingRadius->0], RectangleBox[{1000., 0}, {1100., 16.},
+      RoundingRadius->0], RectangleBox[{1100., 0}, {1200., 12.},
+      RoundingRadius->0], RectangleBox[{1200., 0}, {1300., 15.},
+      RoundingRadius->0], RectangleBox[{1300., 0}, {1400., 11.},
+      RoundingRadius->0], RectangleBox[{1400., 0}, {1500., 17.},
+      RoundingRadius->0], RectangleBox[{1500., 0}, {1600., 12.},
+      RoundingRadius->0], RectangleBox[{1600., 0}, {1700., 15.},
+      RoundingRadius->0], RectangleBox[{1700., 0}, {1800., 12.},
+      RoundingRadius->0], RectangleBox[{1800., 0}, {1900., 12.},
+      RoundingRadius->0], RectangleBox[{1900., 0}, {2000., 13.},
+      RoundingRadius->0], RectangleBox[{2000., 0}, {2100., 14.},
+      RoundingRadius->0], RectangleBox[{2100., 0}, {2200., 10.},
+      RoundingRadius->0], RectangleBox[{2200., 0}, {2300., 15.},
+      RoundingRadius->0], RectangleBox[{2300., 0}, {2400., 15.},
+      RoundingRadius->0], RectangleBox[{2400., 0}, {2500., 10.},
+      RoundingRadius->0], RectangleBox[{2500., 0}, {2600., 11.},
+      RoundingRadius->0], RectangleBox[{2600., 0}, {2700., 15.},
+      RoundingRadius->0], RectangleBox[{2700., 0}, {2800., 14.},
+      RoundingRadius->0], RectangleBox[{2800., 0}, {2900., 12.},
+      RoundingRadius->0], RectangleBox[{2900., 0}, {3000., 11.},
+      RoundingRadius->0], RectangleBox[{3000., 0}, {3100., 12.},
+      RoundingRadius->0], RectangleBox[{3100., 0}, {3200., 10.},
+      RoundingRadius->0], RectangleBox[{3200., 0}, {3300., 11.},
+      RoundingRadius->0], RectangleBox[{3300., 0}, {3400., 15.},
+      RoundingRadius->0], RectangleBox[{3400., 0}, {3500., 11.},
+      RoundingRadius->0], RectangleBox[{3500., 0}, {3600., 14.},
+      RoundingRadius->0], RectangleBox[{3600., 0}, {3700., 13.},
+      RoundingRadius->0], RectangleBox[{3700., 0}, {3800., 12.},
+      RoundingRadius->0], RectangleBox[{3800., 0}, {3900., 11.},
+      RoundingRadius->0], RectangleBox[{3900., 0}, {4000., 11.},
+      RoundingRadius->0], RectangleBox[{4000., 0}, {4100., 15.},
+      RoundingRadius->0], RectangleBox[{4100., 0}, {4200., 9.},
+      RoundingRadius->0], RectangleBox[{4200., 0}, {4300., 16.},
+      RoundingRadius->0], RectangleBox[{4300., 0}, {4400., 9.},
+      RoundingRadius->0], RectangleBox[{4400., 0}, {4500., 11.},
+      RoundingRadius->0], RectangleBox[{4500., 0}, {4600., 12.},
+      RoundingRadius->0], RectangleBox[{4600., 0}, {4700., 12.},
+      RoundingRadius->0], RectangleBox[{4700., 0}, {4800., 12.},
+      RoundingRadius->0], RectangleBox[{4800., 0}, {4900., 8.},
+      RoundingRadius->0], RectangleBox[{4900., 0}, {5000., 15.},
+      RoundingRadius->0], RectangleBox[{5000., 0}, {5100., 12.},
+      RoundingRadius->0], RectangleBox[{5100., 0}, {5200., 11.},
+      RoundingRadius->0], RectangleBox[{5200., 0}, {5300., 10.},
+      RoundingRadius->0], RectangleBox[{5300., 0}, {5400., 10.},
+      RoundingRadius->0], RectangleBox[{5400., 0}, {5500., 13.},
+      RoundingRadius->0], RectangleBox[{5500., 0}, {5600., 13.},
+      RoundingRadius->0], RectangleBox[{5600., 0}, {5700., 12.},
+      RoundingRadius->0], RectangleBox[{5700., 0}, {5800., 10.},
+      RoundingRadius->0], RectangleBox[{5800., 0}, {5900., 16.},
+      RoundingRadius->0], RectangleBox[{5900., 0}, {6000., 7.},
+      RoundingRadius->0], RectangleBox[{6000., 0}, {6100., 12.},
+      RoundingRadius->0], RectangleBox[{6100., 0}, {6200., 11.},
+      RoundingRadius->0], RectangleBox[{6200., 0}, {6300., 13.},
+      RoundingRadius->0], RectangleBox[{6300., 0}, {6400., 15.},
+      RoundingRadius->0], RectangleBox[{6400., 0}, {6500., 8.},
+      RoundingRadius->0], RectangleBox[{6500., 0}, {6600., 11.},
+      RoundingRadius->0], RectangleBox[{6600., 0}, {6700., 10.},
+      RoundingRadius->0], RectangleBox[{6700., 0}, {6800., 12.},
+      RoundingRadius->0], RectangleBox[{6800., 0}, {6900., 12.},
+      RoundingRadius->0], RectangleBox[{6900., 0}, {7000., 13.},
+      RoundingRadius->0], RectangleBox[{7000., 0}, {7100., 9.},
+      RoundingRadius->0], RectangleBox[{7100., 0}, {7200., 10.},
+      RoundingRadius->0], RectangleBox[{7200., 0}, {7300., 11.},
+      RoundingRadius->0], RectangleBox[{7300., 0}, {7400., 9.},
+      RoundingRadius->0], RectangleBox[{7400., 0}, {7500., 11.},
+      RoundingRadius->0], RectangleBox[{7500., 0}, {7600., 15.},
+      RoundingRadius->0], RectangleBox[{7600., 0}, {7700., 12.},
+      RoundingRadius->0], RectangleBox[{7700., 0}, {7800., 10.},
+      RoundingRadius->0], RectangleBox[{7800., 0}, {7900., 10.},
+      RoundingRadius->0], RectangleBox[{7900., 0}, {8000., 10.},
+      RoundingRadius->0], RectangleBox[{8000., 0}, {8100., 11.},
+      RoundingRadius->0], RectangleBox[{8100., 0}, {8200., 10.},
+      RoundingRadius->0], RectangleBox[{8200., 0}, {8300., 14.},
+      RoundingRadius->0], RectangleBox[{8300., 0}, {8400., 9.},
+      RoundingRadius->0], RectangleBox[{8400., 0}, {8500., 8.},
+      RoundingRadius->0], RectangleBox[{8500., 0}, {8600., 12.},
+      RoundingRadius->0], RectangleBox[{8600., 0}, {8700., 13.},
+      RoundingRadius->0], RectangleBox[{8700., 0}, {8800., 11.},
+      RoundingRadius->0], RectangleBox[{8800., 0}, {8900., 13.},
+      RoundingRadius->0], RectangleBox[{8900., 0}, {9000., 9.},
+      RoundingRadius->0], RectangleBox[{9000., 0}, {9100., 11.},
+      RoundingRadius->0], RectangleBox[{9100., 0}, {9200., 12.},
+      RoundingRadius->0], RectangleBox[{9200., 0}, {9300., 11.},
+      RoundingRadius->0], RectangleBox[{9300., 0}, {9400., 11.},
+      RoundingRadius->0], RectangleBox[{9400., 0}, {9500., 15.},
+      RoundingRadius->0], RectangleBox[{9500., 0}, {9600., 7.},
+      RoundingRadius->0], RectangleBox[{9600., 0}, {9700., 13.},
+      RoundingRadius->0], RectangleBox[{9700., 0}, {9800., 11.},
+      RoundingRadius->0], RectangleBox[{9800., 0}, {9900., 12.},
+      RoundingRadius->0], RectangleBox[{9900., 0}, {10000., 9.},
+      RoundingRadius->
+       0]}, {}, {}}, {{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, \
+{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, \
+{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, \
+{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, \
+{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, \
+{}, {}, {}, {}, {}, {}, {}, {}, {}, {}}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{
+    FormBox[
+     TagBox["\"n\"", HoldForm], TraditionalForm], 
+    FormBox[
+     TagBox["\"Primes per 100\"", HoldForm], TraditionalForm]},
+  AxesOrigin->{-200., 0},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  ImageSize->{1187.59765625, Automatic},
+  PlotLabel->FormBox[
+   "\"Number of primes in each block of 100 up to 10,000\"", TraditionalForm],
+  
+  PlotRange->{{0., 10000.}, {All, All}},
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.02], 
+     Scaled[0.05]}},
+  Ticks->{{{0, 
+      FormBox["0", TraditionalForm]}, {1000, 
+      FormBox["1000", TraditionalForm]}, {2000, 
+      FormBox["2000", TraditionalForm]}, {3000, 
+      FormBox["3000", TraditionalForm]}, {4000, 
+      FormBox["4000", TraditionalForm]}, {5000, 
+      FormBox["5000", TraditionalForm]}, {6000, 
+      FormBox["6000", TraditionalForm]}, {7000, 
+      FormBox["7000", TraditionalForm]}, {8000, 
+      FormBox["8000", TraditionalForm]}, {9000, 
+      FormBox["9000", TraditionalForm]}, {10000, 
+      FormBox["10000", TraditionalForm]}}, Automatic}]], "Output",
+ CellChangeTimes->{4.001377880179016*^9},
+ CellLabel->"Out[5]=",ExpressionUUID->"4ac64e23-c5ee-4ce9-85c3-d67308d2fbe3"]
+}, Open  ]],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"estimate", "=", 
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"100", " ", "k"}], "-", "50"}], ",", 
+        RowBox[{"N", "[", 
+         RowBox[{
+          RowBox[{"LogIntegral", "[", 
+           RowBox[{"100", " ", "k"}], "]"}], "-", 
+          RowBox[{"LogIntegral", "[", 
+           RowBox[{"Max", "[", 
+            RowBox[{
+             RowBox[{"100", " ", 
+              RowBox[{"(", 
+               RowBox[{"k", "-", "1"}], ")"}]}], ",", "2"}], "]"}], "]"}]}], 
+         "]"}]}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"k", ",", "1", ",", "100"}], "}"}]}], "]"}]}], ";"}], 
+  "\n"}], "\[IndentingNewLine]", 
+ RowBox[{"Show", "[", 
+  RowBox[{
+   RowBox[{"Histogram", "[", 
+    RowBox[{"primes", ",", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", "10000", ",", "100"}], "}"}], ",", 
+     RowBox[{"Ticks", "->", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"Range", "[", 
+         RowBox[{"0", ",", "10000", ",", "1000"}], "]"}], ",", "Automatic"}], 
+       "}"}]}]}], "]"}], ",", 
+   RowBox[{"ListLinePlot", "[", 
+    RowBox[{"estimate", ",", 
+     RowBox[{"PlotStyle", "->", 
+      RowBox[{"{", 
+       RowBox[{"Red", ",", "Thick"}], "}"}]}]}], "]"}], ",", 
+   RowBox[{"ImageSize", "->", "Large"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{4.001377890191689*^9, 4.001377890193656*^9}},
+ CellLabel->"",ExpressionUUID->"4e780e9c-33b4-43f2-b038-3bfed1f36176"]
+},
+WindowSize->{1394, 1159},
+WindowMargins->{{377, Automatic}, {Automatic, 33}},
+FrontEndVersion->"13.3 for Mac OS X ARM (64-bit) (April 11, 2023)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"553e2545-3f3c-4f63-9446-8bf64444a87a"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 974, 26, 94, "Input",ExpressionUUID->"29600e56-d39a-48d0-93f9-c47e645bda0f"],
+Cell[1557, 50, 8560, 148, 756, "Output",ExpressionUUID->"4ac64e23-c5ee-4ce9-85c3-d67308d2fbe3"]
+}, Open  ]],
+Cell[10132, 201, 1488, 43, 73, "Input",ExpressionUUID->"4e780e9c-33b4-43f2-b038-3bfed1f36176"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

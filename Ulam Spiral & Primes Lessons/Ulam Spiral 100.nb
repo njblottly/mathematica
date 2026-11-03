@@ -1,0 +1,187 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      6281,        179]
+NotebookOptionsPosition[      5838,        164]
+NotebookOutlinePosition[      6234,        180]
+CellTagsIndexPosition[      6191,        177]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"pos", "=", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"x", "=", "0"}], ",", 
+        RowBox[{"y", "=", "0"}], ",", 
+        RowBox[{"dx", "=", "1"}], ",", 
+        RowBox[{"dy", "=", "0"}], ",", 
+        RowBox[{"steps", "=", "1"}], ",", 
+        RowBox[{"count", "=", "0"}], ",", 
+        RowBox[{"turns", "=", "0"}]}], "}"}], ",", 
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{"With", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"p", "=", 
+            RowBox[{"{", 
+             RowBox[{"x", ",", 
+              RowBox[{"-", "y"}]}], "}"}]}], "}"}], ",", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"x", ",", "y"}], "}"}], "=", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"x", "+", "dx"}], ",", 
+              RowBox[{"y", "+", "dy"}]}], "}"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"count", "++"}], ";", "\[IndentingNewLine]", 
+           RowBox[{"If", "[", 
+            RowBox[{
+             RowBox[{"count", "==", "steps"}], ",", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{"dx", ",", "dy"}], "}"}], "=", 
+               RowBox[{"{", 
+                RowBox[{
+                 RowBox[{"-", "dy"}], ",", "dx"}], "}"}]}], ";", 
+              RowBox[{"count", "=", "0"}], ";", 
+              RowBox[{"turns", "++"}], ";", "\[IndentingNewLine]", 
+              RowBox[{"If", "[", 
+               RowBox[{
+                RowBox[{"turns", "==", "2"}], ",", 
+                RowBox[{
+                 RowBox[{"steps", "++"}], ";", 
+                 RowBox[{"turns", "=", "0"}]}]}], "]"}]}]}], "]"}], ";", 
+           "\[IndentingNewLine]", "p"}]}], "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"k", ",", "1", ",", "100"}], "}"}]}], "]"}]}], "]"}]}], 
+   ";"}], "\[IndentingNewLine]"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"primeColour", "=", 
+    RowBox[{"RGBColor", "[", 
+     RowBox[{"0.45", ",", "0.35", ",", "0.85"}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"draw", "[", "m_", "]"}], ":=", 
+    RowBox[{"Graphics", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"GrayLevel", "[", "0.75", "]"}], ",", 
+          RowBox[{"Thickness", "[", "0.004", "]"}], ",", 
+          RowBox[{"Line", "[", 
+           RowBox[{"pos", "[", 
+            RowBox[{"[", 
+             RowBox[{";;", "m"}], "]"}], "]"}], "]"}]}], "}"}], ",", 
+        RowBox[{"Table", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"Which", "[", 
+             RowBox[{
+              RowBox[{"PrimeQ", "[", "k", "]"}], ",", "primeColour", ",", 
+              RowBox[{"k", "==", "1"}], ",", 
+              RowBox[{"GrayLevel", "[", "0.6", "]"}], ",", "True", ",", 
+              RowBox[{"GrayLevel", "[", "0.94", "]"}]}], "]"}], ",", 
+            RowBox[{"EdgeForm", "[", 
+             RowBox[{"GrayLevel", "[", "0.7", "]"}], "]"}], ",", 
+            RowBox[{"Rectangle", "[", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"pos", "[", 
+                RowBox[{"[", "k", "]"}], "]"}], "-", "0.42"}], ",", 
+              RowBox[{
+               RowBox[{"pos", "[", 
+                RowBox[{"[", "k", "]"}], "]"}], "+", "0.42"}]}], "]"}], ",", 
+            RowBox[{"If", "[", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"PrimeQ", "[", "k", "]"}], "||", 
+               RowBox[{"k", "==", "1"}]}], ",", "White", ",", 
+              RowBox[{"GrayLevel", "[", "0.35", "]"}]}], "]"}], ",", 
+            RowBox[{"Text", "[", 
+             RowBox[{
+              RowBox[{"Style", "[", 
+               RowBox[{"k", ",", "13", ",", 
+                RowBox[{"If", "[", 
+                 RowBox[{
+                  RowBox[{"PrimeQ", "[", "k", "]"}], ",", "Bold", ",", 
+                  "Plain"}], "]"}]}], "]"}], ",", 
+              RowBox[{"pos", "[", 
+               RowBox[{"[", "k", "]"}], "]"}]}], "]"}]}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"k", ",", "m"}], "}"}]}], "]"}]}], "}"}], ",", 
+      RowBox[{"PlotRange", "->", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"-", "4.6"}], ",", "5.6"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"-", "5.6"}], ",", "4.6"}], "}"}]}], "}"}]}], ",", 
+      RowBox[{"ImageSize", "->", "520"}]}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\n", 
+ RowBox[{"Manipulate", "[", 
+  RowBox[{
+   RowBox[{"draw", "[", "m", "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"m", ",", "100", ",", "\"\<Numbers shown\>\""}], "}"}], ",", 
+     "1", ",", "100", ",", "1", ",", 
+     RowBox[{"Appearance", "->", "\"\<Labeled\>\""}]}], "}"}]}], 
+  "]"}]}], "Input",
+ CellChangeTimes->{{4.0013791525468483`*^9, 4.001379152548113*^9}},
+ CellLabel->"In[18]:=",ExpressionUUID->"8f0b2c3d-544b-45ef-95ad-3793b801b8ed"],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{4.002149407205639*^9, 
+  4.002149409577265*^9}},ExpressionUUID->"baa41e6a-81e2-4b98-bc35-\
+6458b28e0722"]
+},
+WindowSize->{1334, 1219},
+WindowMargins->{{Automatic, 42}, {36, Automatic}},
+FrontEndVersion->"13.3 for Mac OS X ARM (64-bit) (April 11, 2023)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"1484ea74-c60d-4d5b-b6b4-665ee4e7d835"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 5121, 137, 325, "Input",ExpressionUUID->"8f0b2c3d-544b-45ef-95ad-3793b801b8ed"],
+Cell[5682, 159, 152, 3, 30, "Input",ExpressionUUID->"baa41e6a-81e2-4b98-bc35-6458b28e0722"]
+}
+]
+*)
+
